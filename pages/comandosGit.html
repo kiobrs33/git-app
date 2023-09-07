@@ -220,6 +220,31 @@
         a11bef0 - Scott Chacon, 6 years ago : first commit
 
       </pre>
+
+      <hr />
+
+      <h3>Deshacer un archivo Confirmado</h3>
+      <pre>
+        $ git commit --amend
+      </pre>
+
+      <h3>Deshacer un Archivo Preparado</h3>
+      <pre>
+        Primera forma
+        $ git restore --staged "archivo..."
+
+        Segunda forma
+        $ git reset HEAD "archivo..."
+      </pre>
+
+      <h3>Deshacer un Archivo Modificado</h3>
+      <pre>
+        Primera forma
+        $ git restore "archivo..."
+
+        Segunda forma
+        $ git checkout -- "archivo..."
+      </pre>
     </section>
   </body>
 </html>
