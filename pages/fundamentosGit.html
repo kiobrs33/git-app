@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Fundamentos Git</title>
+  </head>
+  <body>
+    <a href="/index.html"><b>INICIO</b></a>
+
+    <h1>Configurando Git por primera vez</h1>
+    <ol>
+      <li>
+        <h3>Inicializando un repositorio en un directorio existente</h3>
+
+        <p>
+          Git trae una herramienta llamada git variables de configuración que
+          config, que te permite obtener y establecer controlan el aspecto y
+          funcionamiento de Git. Estas variables pueden almacenarse en tres
+          sitios distintos:
+        </p>
+        <ul>
+          <li>
+            Archivo /etc/gitconfig: Contiene valores para todos los usuarios del
+            sistema y todos sus repositorios. Si pasas la opción a --system git
+            config, lee y escribe específicamente en este archivo.
+          </li>
+          <li>
+            Archivo ~/.gitconfig o ~/.config/git/config: Este archivo es
+            específico de tu usuario. Puedes hacer que Git lea y escriba
+            específicamente en este archivo pasando la opción --global.
+          </li>
+          <li>
+            Archivo config en el directorio de Git (es decir, .git/config) del
+            repositorio que estés utilizando actualmente: Este archivo es
+            específico del repositorio actual.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3>Configurar tu Identidad</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git config --global user.name [nombre-usuario]
+            </code>
+          </li>
+          <li>
+            <code class="line_command">
+              git config --global user.email [correo-usuario]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git config --global user.name "John Doe"
+        $ git config --global user.email johndoe@example.com
+        </pre>
+      </li>
+      <li>
+        <h3>Configurar tu Editor</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git config --global core.editor [nombre-editor]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git config --global core.editor emacs
+        </pre>
+      </li>
+      <li>
+        <h3>Comprobando tu Configuración</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git config --list</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git init
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Obteniendo un repositorio Git</h1>
+    <ol>
+      <li>
+        <h3>Inicializando un repositorio en un directorio existente</h3>
+        <p>
+          Puede que veas claves repetidas, porque Git lee la misma clave de
+          distintos archivos (/etc/gitconfig y ~/.gitconfig, por ejemplo). En
+          estos casos, Git usa el último valor para cada clave única que ve.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git init</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git config --list
+        </pre>
+      </li>
+
+      <li>
+        <h3>
+          Comenzar el seguimiento de esos archivos y hacer una confirmación
+          inicial.
+        </h3>
+        <h4>Comandos:</h4>
+        <ul>
+          <li><code class="line_command">git add [nombre-archivo]</code></li>
+          <li>
+            <code class="line_command">git commit -m [mensaje-commit]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git add *.c
+        $ git add LICENSE
+        $ git commit -m 'initial project version'
+        </pre>
+      </li>
+
+      <li>
+        <h3>Clonando un repositorio existente</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git clone [url]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git clone https://github.com/libgit2/libgit2
+        </pre>
+      </li>
+
+      <li>
+        <h3>
+          Clonando un repositorio existente con un nombre de directorio
+          diferente
+        </h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git clone [url]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git clone https://github.com/libgit2/libgit2
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Guardando cambios en el Repositorio</h1>
+    <ol>
+      <li>
+        <h3>Revisando el Estado de tus Archivos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git status</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git status
+        </pre>
+      </li>
+
+      <li>
+        <h3>Rastrear Archivos Nuevos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git add [nombre-archivo]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git add index.html
+        </pre>
+      </li>
+
+      <li>
+        <h3>Preparar Archivos Modificados</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git add [nombre-archivo]</code></li>
+          <li><code class="line_command">git add status</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git add index.html
+        $ git status
+        </pre>
+      </li>
+
+      <li>
+        <h3>Ignorar Archivos</h3>
+        <p>
+          Crear un archivo ".gitignore" y agregar una lista de archivos o
+          directorios que git no considerara.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">touch .gitignore - linux</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Ignora los archivos terminados en .a
+        *.a
+
+        Pero no lib.a, aun cuando había ignorado los archivos terminados en .a en la línea
+        anterior
+        !lib.a
+
+        Ignora unicamente el archivo TODO de la raiz, no subdir/TODO
+        /TODO
+
+        Ignora todos los archivos del directorio build/
+        build/
+
+        Ignora doc/notes.txt, pero no este: doc/server/arch.txt
+        doc/*.txt
+
+        Ignora todos los archivos .txt del directorio doc/
+        doc/**/*.txt          
+        </pre>
+      </li>
+
+      <li>
+        <h3>Ver los Cambios Preparados y No Preparados</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git diff</code></li>
+          <li><code class="line_command">git diff --staged</code></li>
+          <li><code class="line_command">git diff [nombre-archivo]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Te muestra todas las líneas exactas que fueron añadidas y eliminadas
+        $ git diff
+
+        Si quieres ver lo que has preparado y será incluido en la próxima confirmación
+        $ git diff --staged
+
+        Solo te muestra los cambios de un archivo específico
+        $ git diff papitas.html
+        </pre>
+      </li>
+
+      <li>
+        <h3>Confirmar tus Cambios</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git commit</code></li>
+          <li>
+            <code class="line_command">git commit -m [mensaje-commit]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Al hacerlo, arrancará el editor de tu preferencia para que puedas escribir tu mensaje de confirmación
+        $ git commit
+
+        Te permite escribir el mensaje de confirmación directamente
+        $ git commit -m "hola mundo"
+        </pre>
+      </li>
+
+      <li>
+        <h3>Saltar el Área de Preparación</h3>
+        <p>
+          Añadiendo la opción -a al comando git commit harás que Git prepare
+          automáticamente todos los archivos rastreados antes de confirmarlos,
+          ahorrándote el paso de git add
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git commit -a -m [mensaje-commit]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git commit -a -m 'added new benchmarks'
+        </pre>
+      </li>
+
+      <li>
+        <h3>Eliminar Archivos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git rm [nombre-archivo]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Eliminas el archivo de tu directorio de trabajo
+        $ rm papitas.html
+
+        Eliminando de tus archivos rastreados (o mejor dicho, eliminarlos del área de preparación)
+        $ git rm papitas.html
+        </pre>
+      </li>
+
+      <li>
+        <h3>Rastrear Archivos Nuevos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git add [nombre-archivo]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git add index.html
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Ver el Historial de Confirmaciones</h1>
+    <ol>
+      <li>
+        <h3>Listar confirmaciones</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git log</code></li>
+          <li><code class="line_command">git log -p</code></li>
+          <li>
+            <code class="line_command">
+              git log -[numero-entradas-historial]
+            </code>
+          </li>
+          <li><code class="line_command">git log --stat</code></li>
+          <li><code class="line_command">git log --pretty=oneline</code></li>
+          <li><code class="line_command">git log --pretty=short</code></li>
+          <li><code class="line_command">git log --pretty=full</code></li>
+          <li><code class="line_command">git log --pretty=fuller</code></li>
+          <li>
+            <code class="line_command">
+              git log --pretty=format:["%h - %an, %ar : %s"]
+            </code>
+          </li>
+          <li>
+            <code class="line_command">
+              git log --oneline --decorate --graph --all
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Te muestra el historial de confirmaciones
+        $ git log
+
+        Muestra las diferencias introducidas en cada confirmación
+        $ git log -p
+
+        Muestra únicamente las 3 últimas entradas del historial
+        $ git log -3
+
+        Muestra las estadisticas de cada confirmación
+        $ git log --stat
+
+        Imprime cada confirmación en una única línea
+        $ git log --pretty=oneline
+
+        Te muestran la salida en un formato parecido, pero añadiendo menos o más información, respectivamente
+        $ git log --pretty=short
+        $ git log --pretty=full
+        $ git log --pretty=fuller
+
+        Te permite especificar tu propio formato
+        $ git log --pretty=format:"%h - %an, %ar : %s"
+
+        Aqui otras alternativas muy utilizadas
+        $ git log --oneline --decorate --graph --all
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Deshacer Cosas</h1>
+    <ol>
+      <li>
+        <h3>Cambiar el mensaje de una confirmacion</h3>
+        <p>
+          Este comando utiliza tu área de preparación para la confirmación. Si
+          no has hecho cambios desde tu última confirmación (por ejemplo,
+          ejecutas este comando justo después de tu confirmación anterior),
+          entonces la instantánea lucirá exactamente igual y lo único que
+          cambiarás será el mensaje de confirmación.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git commit --amend</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git commit --amend
+        </pre>
+      </li>
+      <li>
+        <h3>Incluir un archivo olvidado a la confirmacion</h3>
+        <p>
+          Al final terminarás con una sola confirmación - la segunda
+          confirmación reemplaza el resultado de la primera.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git commit --amend</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git commit -m 'initial commit'
+        $ git add mazanita.html
+        $ git commit --amend
+        </pre>
+      </li>
+      <li>
+        <h3>Deshacer un Archivo Preparado</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git restore --staged [nombre-archivo]
+            </code>
+          </li>
+
+          <li>
+            <code class="line_command"> git reset HEAD [nombre-archivo]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git restore --staged durazno.html
+        $ git reset HEAD durazno.html
+        </pre>
+      </li>
+      <li>
+        <h3>Deshacer todos los cambios y dejar tu rama como al principio</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git reset --hard</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git reset --hard
+        </pre>
+      </li>
+      <li>
+        <h3>Deshacer un Archivo Modificado</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git restore [nombre-archivo]</code>
+          </li>
+          <li>
+            <code class="line_command">git checkout -- [nombre-archivo]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git restore mazana.html
+        $ git checkout -- mazana.html
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Trabajar con Remotos</h1>
+    <ol>
+      <li>
+        <h3>Ver tus remotos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git remote</code></li>
+          <li><code class="line_command">git remote -v</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git remote
+        $ git remote -v
+        </pre>
+      </li>
+      <li>
+        <h3>Añadir Repositorios Remotos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git remote add [nombre] [url]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git remote add paulito https://github.com/paulboone/ticgit
+        </pre>
+      </li>
+      <li>
+        <h3>
+          Para traer todo el trabajo nuevo que ha sido enviado a ese servidor de
+          un usuario
+        </h3>
+        <p>
+          La rama maestra de Paul ahora es accesible localmente con el nombre
+          "paulito/master" y puedes combinarla con alguna de tus ramas
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git fetch [nombre-remote]</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git fetch paulito
+        </pre>
+      </li>
+      <li>
+        <h3>Traer y Combinar Remotos</h3>
+        <p>
+          El comando git pull para trae y combina automáticamente la rama remota
+          con tu rama actual.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git pull [nombre-remoto] [rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git pull origin master
+        $ git pull paulito master
+        </pre>
+      </li>
+      <li>
+        <h3>Enviar a Tus Remotos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git push [nombre-remoto] [nombre-rama]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git push origin master
+        </pre>
+      </li>
+      <li>
+        <h3>Inspeccionar un Remoto</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git remote show [nombre-remoto]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git remote show origin
+        </pre>
+      </li>
+      <li>
+        <h3>Renombrar Remotos</h3>
+        <p>
+          Es importante destacar que al hacer esto también cambias el nombre de
+          las ramas remotas. Por lo tanto, lo que antes estaba referenciado como
+          paulito/master ahora lo está como paul/master.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git remote rename [nombre-remoto] [nuevo-nombre]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git remote rename paulito paul
+        </pre>
+      </li>
+      <li>
+        <h3>Remover Remotos</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git remote rm [nombre-remoto]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git remote rm paul
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Etiquetado</h1>
+    <ol>
+      <li>
+        <h3>Listar Etiquetas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li><code class="line_command">git tag</code></li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git tag
+        </pre>
+      </li>
+      <li>
+        <h3>Buscar Etiquetas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git tag -l [nombre-etiqueta]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git tag -l 'v1.8.5*'
+        </pre>
+      </li>
+      <li>
+        <h3>Crear Etiquetas Anotadas</h3>
+        <p>La etiqueta se genera en la confirmacion actual que te encuentres</p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git tag -a [nombre-etiqueta] -m [mensaje-de-la-etiqueta]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git tag -a v1.4 -m 'my version 1.4'
+        </pre>
+      </li>
+      <li>
+        <h3>Ver información de la Etiqueta</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git show [nombre-etiqueta] </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git show v1.4
+        </pre>
+      </li>
+      <li>
+        <h3>Crear Etiquetas Tardías</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git tag -a [nombre-etiqueta] [key-confirmacion]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git tag -a v1.2 9fceb02
+        </pre>
+      </li>
+      <li>
+        <h3>Compartir una Etiqueta</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git push [nombre-remoto] [nombre-etiqueta]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git push origin v1.5
+        </pre>
+      </li>
+      <li>
+        <h3>Compartir varias Etiquetas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git push [nombre-remoto] --tags</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git push origin --tags
+        </pre>
+      </li>
+      <li>
+        <h3>Sacar una Etiqueta</h3>
+        <p>
+          Si quieres colocar en tu directorio de trabajo una versión de tu
+          repositorio que coincida con alguna etiqueta, debes crear una rama
+          nueva en esa etiqueta.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git checkout -b [nombre-nueva-rama] [nombre-etiqueta]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git checkout -b version2 v2.0.0
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Alias de Git</h1>
+    <ol>
+      <li>
+        <h3>Compartir varias Etiquetas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command"
+              >git config --global alias.[nombre-alias] [comando-git]</code
+            >
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git config --global alias.co checkout
+        $ git config --global alias.br branch
+        $ git config --global alias.ci commit
+        $ git config --global alias.st status
+
+        En uso
+        $ git unstage fileA
+        $ git reset HEAD fileA
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Ramificaciones en Git</h1>
+    <ol>
+      <li>
+        <h3>Crear una Rama Nueva</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git branch [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git branch testingQA
+  
+        Para mejor visualizacion de las ramas en linea de Comandos
+        $ git log --oneline --decorate
+        </pre>
+      </li>
+      <li>
+        <h3>Cambiar de ramas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git checkout [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git checkout testingQA
+  
+        $ git checkout master
+  
+        Mejor visualizacion de ramas
+        $ git log --oneline --decorate --graph --all
+        </pre>
+      </li>
+      <li>
+        <h3>Para crear una nueva rama y saltar a ella</h3>
+        <p>
+          Es un atajo de los comandos "git branch feature333" y "git checkout
+          feature333"
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git checkout -b [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git checkout -b feature333
+        $ git checkout -b hotfix
+        </pre>
+      </li>
+      <li>
+        <h3>Procedimientos Básicos de Fusión</h3>
+        <p>Incorporar los cambios a una rama a otra</p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git merge [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Te posicionas en la rama en donde deseas incorporar los cambios en este caso MASTER
+        $ git checkout master
+  
+        Aqui se incorpora cambios de la rama HOTFIX a la rama MASTER
+        $ git merge hotfix
+        </pre>
+      </li>
+      <li>
+        <h3>Eliminar rama</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git branch -d [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git branch -d hotfix
+        </pre>
+      </li>
+      <li>
+        <h3>Principales Conflictos que Pueden Surgir en las Fusiones</h3>
+        <p>
+          En algunas ocasiones, los procesos de fusión no suelen ser fluidos. Si
+          hay modificaciones dispares en una misma porción de un mismo archivo
+          en las dos ramas distintas que pretendes fusionar, Git no será capaz
+          de fusionarlas directamente.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git merge [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git merge iss53
+
+        Auto-merging index.html
+        CONFLICT (content): Merge conflict in index.html
+        Automatic merge failed; fix conflicts and then commit the result.
+  
+        Todo aquello que sea conflictivo y no se haya podido resolver, se marca
+        como "sin fusionar" (unmerged). Git añade a los archivos conflictivos
+        unos marcadores especiales de resolución de conflictos que te guiarán
+        cuando abras manualmente los archivos implicados y los edites para
+        corregirlos.
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Gestión de Ramas</h1>
+    <ol>
+      <li>
+        <h3>Lista de Ramas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git branch</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git branch
+
+        Te muestra las ramas y el commit  asociado a cada una
+        $ git branch -v
+
+        Te muestra las ramas que han sido fusionadas con la rama activa
+        $ git branch --merged
+
+        Te muestra todas las ramas que contienen trabajos sin fusionar
+        $ git branch --no-merged
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Flujos de Trabajo Ramificados</h1>
+    <ol>
+      <li>
+        <h3>Ramas de Largo Recorrido</h3>
+        <p>
+          Muchos desarrolladores que usan Git llevan un flujo de trabajo de esta
+          naturaleza, manteniendo en la rama master únicamente el código
+          totalmente estable (el código que ha sido o que va a ser liberado) y
+          teniendo otras ramas paralelas denominadas desarrollo o siguiente, en
+          las que trabajan y realizan pruebas. Estas ramas paralelas no suelen
+          estar siempre en un estado estable; pero cada vez que sí lo están,
+          pueden ser fusionadas con la rama master.
+        </p>
+      </li>
+      <li>
+        <h3>Ramas Puntuales</h3>
+        <p>
+          Las ramas puntuales, en cambio, son útiles en proyectos de cualquier
+          tamaño. Una rama puntual es aquella rama de corta duración que abres
+          para un tema o para una funcionalidad determinada. Es algo que nunca
+          habrías hecho en otro sistema VCS, debido a los altos costos de crear
+          y fusionar ramas en esos sistemas. Pero en Git, por el contrario, es
+          muy habitual el crear, trabajar con, fusionar y eliminar ramas varias
+          veces al día.
+        </p>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Ramas Remotas</h1>
+    <ol>
+      <li>
+        <h3>Publicar Ramas Remotas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git push [nombre-remoto] [nombre-rama]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git push origin master
+  
+        $ git push lozano feature333
+        </pre>
+      </li>
+      <li>
+        <h3>Recuperar Nuevas Ramas Remotas - TRAER</h3>
+        <p>
+          "Fetch" Se usa para descargar contenidos desde un repositorio remoto
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command"> git fetch [nombre-remoto] </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git fetch origin
+  
+        $ git fetch lozano
+        </pre>
+      </li>
+      <li>
+        <h3>Integrar cambios de una Rama Remota a mi local - FUSIONAR</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git merge [nombre-remoto/nombre-rama]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Nos posicionamos en la rama que se desea integrar los nuevos cambios
+        $ git checkout master
+  
+        Integramos los nuevos cambios
+        $ git merge origin/serverfix
+
+        Crear una nueva rama donde se integre los cambios de la rama remota
+        $ git checkout -b localfix origin/servefix
+        </pre>
+      </li>
+      <li>
+        <h3>Hacer Seguimiento a las Ramas</h3>
+        <p>
+          Las ramas de seguimiento son ramas locales que tienen una relación
+          directa con alguna rama remota.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git checkout -b [rama] [nombre-remoto]/[rama]
+            </code>
+            <code class="line_command">
+              git checkout --track [nombre-remoto]/[rama]
+            </code>
+            <code class="line_command">
+              git branch -u [nombre-remoto]/[rama]
+            </code>
+            <code class="line_command">
+              git --set-upstream-to [nombre-remoto]/[rama]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Es para crear una Rama Local y asociarla con una Rama Remota
+        $ git checkout -b bugfixHard origin/bugfix
+  
+        Es para generar un Nueva Rama Local con el nombre "featureA" conectado con la Rama Remota del mismo Nombre
+        $ git checkout --track origin/featureA
+
+
+        Primero debes posicionarte en una Rama ya creada en tu Local
+        Luego ejecutando este comando nos permitirá asociar la Rama Local con una Rama Remota
+        $ git checkout branch -u origin/featureB
+
+        Este comando hace la misma operacion que "git checkout branch -u origin/featureB"
+        $ git checkout --set-upstream-to origin/featureB
+        </pre>
+      </li>
+      <li>
+        <h3>Listar Ramas de Seguimiento</h3>
+        <p>
+          Esto listará tus ramas locales con más información, incluyendo a qué
+          sigue cada rama y si tu rama local está por delante, por detrás o
+          ambas.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git branch -vv</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git branch -vv
+        </pre>
+      </li>
+      <li>
+        <h3>Eliminar Ramas Remotas</h3>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">
+              git push origin --delete [nombre-rama]
+            </code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        $ git push origin --delete serverfix
+        </pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h1>Reorganizar el Trabajo Realizado</h1>
+    <ol>
+      <li>
+        <h3>Reorganizar</h3>
+        <p>
+          Puedes capturar todos los cambios confirmados en una rama y
+          reaplicarlos sobre otra.
+        </p>
+        <h4>Comando:</h4>
+        <ul>
+          <li>
+            <code class="line_command">git rebase [nombre-rama]</code>
+          </li>
+        </ul>
+        <h4>Ejemplo:</h4>
+        <pre>
+        Ingresamos a la rama que tiene los cambios realizados por nosotros
+        $ git checkout feature21
+  
+        Con este comando le indicamos sobre que rama vamos a reaplicar los cambios que hicimos
+        $ git rebase experiment
+        </pre>
+      </li>
+      <li>
+        <h3>Observaciones y Recomendaciones</h3>
+        <ul>
+          <li>
+            Nunca reorganices confirmaciones de cambio (commits) que hayas
+            enviado (push) a un repositorio público.
+          </li>
+          <li>Reorganizar tu trabajo local, que aún no has compartido</li>
+        </ul>
+      </li>
+    </ol>
+  </body>
+</html>

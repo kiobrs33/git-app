@@ -1,4 +1,17 @@
 body {
   padding: 25px;
   font-family: sans-serif;
+  background: #ddd;
+}
+
+pre {
+  font-style: italic;
+  font-weight: 550;
+  color: #26577c;
+}
+
+.line_command {
+  font-style: italic;
+  color: #c0392b;
+  font-weight: 550;
 }
